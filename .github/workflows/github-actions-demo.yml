@@ -17,5 +17,5 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: When Pushed
-        if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: echo "Pushed into main!"
