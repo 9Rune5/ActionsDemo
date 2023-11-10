@@ -8,11 +8,11 @@ on:
     types:  ["published"]
 jobs:
   Explore-GitHub-Actions:
+    environment: ${{ github.event_name == 'release' && 'Production' || 'Development' }}
     runs-on: ubuntu-latest
-    env:
-      Environment: ${{ github.event_name == 'release' && 'prod' || 'dev' }}
     steps:
       - run: echo "We are targetting the '$Environment' environment."
+      - run: echo "Our variable is '${{ vars.MYVAR }}'"
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
